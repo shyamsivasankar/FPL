@@ -1,28 +1,22 @@
 from fastapi import FastAPI,Request,Form
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
-import requests
-import json
+from fastapi.staticfiles import StaticFiles
+
+from Modules.userdata import userteam
+from Modules.playerdata import player
+import jsons
 
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
-session = requests.session()
+app.mount("/static",StaticFiles(directory='static'),name='static')
 
 @app.get('/',response_class=HTMLResponse)
 async def home(request: Request):
     return templates.TemplateResponse('Login.html',{'request':request})
 
 @app.post('/Login')
-async def login(req : Request, Username : str = Form() ,Password : str = Form()):
-    url = 'https://users.premierleague.com/accounts/login/'
-    payload = {
-        'password' : Password,
-        'login' : Username,
-        'redirect_uri': 'https://fantasy.premierleague.com/a/login',
-        'app': 'plfpl-web'
-    }
-    session.post(url, data=payload)
-    response = session.get('https://fantasy.premierleague.com/drf/my-team/2730144')
-    team_data = response.content
-
-    return HTMLResponse(content=team_data, status_code=200)
+async def login(req : Request, managerid : str = Form()):
+    data = await userteam(managerid=managerid,gameweek=str(19))
+    p1 = await player(playerid=data['picks'][0]['element'])
+    return p1
