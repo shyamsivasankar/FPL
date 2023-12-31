@@ -20,3 +20,7 @@ async def login(req : Request, managerid : str = Form()):
     data = await userteam(managerid=managerid,gameweek=str(19))
     p1 = await player(playerid=data['picks'][0]['element'])
     return p1
+
+@app.get('/Team')
+async def team(request: Request):
+    return templates.TemplateResponse('Team.html',{'request':request})
