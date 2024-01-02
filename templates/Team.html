@@ -17,17 +17,49 @@
         <div class="team">
             <div class="team-stats">
                 <form class="gw-select" action="/team">
-                    <select title="Gameweek" name="GW" id="gw">
-                        {% for i in range(1, 38) %}
-                            <option class="GW" value="GW{{ i }}">Gameweek {{ i }}</option>
-                        {% endfor %}
-                    </select>
-                    <input type="submit" value="Submit">
+                    <div class="gw">
+                        <div class="gw-header">Gameweek</div>
+                        <div class="gw-data">
+                            <select class="gw-opt" title="Gameweek" name="GW" id="gw">
+                                {% for i in range(1, 38) %}
+                                    <option class="GWoptions" value="GW{{ i }}">{{ i }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="gw">
+                        <div class="gw-header">Manager</div>
+                        <div class="gw-data">Shyam</div>
+                    </div>
+                    <input class="gw-submit" type="submit" value=">">
                   </form>
+                  <div class="gw-select">
+                    <div>
+                        <div class="gw-header">Live Points</div>
+                        <div class="gw-data">78</div>
+                    </div>
+                    <div>
+                        <div class="gw-header">Overall Points</div>
+                        <div class="gw-data">1965</div>
+                    </div>
+                    <div>
+                        <div class="gw-header">GW Rank</div>
+                        <div class="gw-data">5,200</div>
+                    </div>
+                    <div>
+                        <div class="gw-header">Value</div>
+                        <div class="gw-data">$104.8</div>
+                    </div>
+                    <div>
+                        <div class="gw-header">Overall</div>
+                        <div class="gw-data">9,321</div>
+                    </div>
+                  </div>
             </div>
             <div class="line"></div>
             <div class="players">
-                
+
             </div>
         </div>
         

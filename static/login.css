@@ -70,6 +70,13 @@
     width: 300px;
   }
 
+  @media (max-width:1440px){
+    .formlogo{
+      height: 200px;
+      width: 200px;
+    }  
+  }
+
   input[type="text"]{
     height: 40px;
     width: 400px;
