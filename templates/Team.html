@@ -60,120 +60,65 @@
             <div class="line"></div>
             <div class="players">
                 <div class="team-row">
-                    <button class="player-stats">
-                        <div class="player-kit-img">
-                            <img src="{{ url_for('static', path='/assets/kits/ARS_2324_HK_PL_S1.webp') }}" alt="" srcset="">
-                            <p>Ramsdale</p>
-                        </div>
-                        <div class="player-points">5</div>
-                    </button>                
+                    {% for i in GK%}
+                        <button class="player-stats">
+                            <div class="player-kit-img">
+                                <!-- <img src="{{ url_for('static', path='/assets/kits/i[1].webp') }}" alt="" srcset=""> -->
+                                <img src="{{ url_for('static', path='assets/kits/' + i[1] + '.webp') }}" alt="" srcset="">
+                                <p>{{ i[0] }}</p>
+                            </div>
+                            <div class="player-points">5</div>
+                        </button>  
+                    {% endfor %}              
                 </div>
                 <div class="team-row">
-                    <div class="player-stats">
-                        <div class="player-kit-img">
-                            <img src="{{ url_for('static', path='/assets/kits/ARS_2324_HK_PL_S1.webp') }}" alt="" srcset="">
-                            <p>Ramsdale</p>
-                        </div>
-                        <div class="player-points">5</div>
-                    </div>                
-                    <div class="player-stats">
-                        <div class="player-kit-img">
-                            <img src="{{ url_for('static', path='/assets/kits/ARS_2324_HK_PL_S1.webp') }}" alt="" srcset="">
-                            <p>Ramsdale</p>
-                        </div>
-                        <div class="player-points">5</div>
-                    </div>                
-                    <div class="player-stats">
-                        <div class="player-kit-img">
-                            <img src="{{ url_for('static', path='/assets/kits/ARS_2324_HK_PL_S1.webp') }}" alt="" srcset="">
-                            <p>Ramsdale</p>
-                        </div>
-                        <div class="player-points">5</div>
-                    </div>                
-                    <div class="player-stats">
-                        <div class="player-kit-img">
-                            <img src="{{ url_for('static', path='/assets/kits/ARS_2324_HK_PL_S1.webp') }}" alt="" srcset="">
-                            <p>Ramsdale</p>
-                        </div>
-                        <div class="player-points">5</div>
-                    </div>                
+                    {% for i in DEF%}
+                        <button class="player-stats">
+                            <div class="player-kit-img">
+                                <!-- <img src="{{ url_for('static', path='/assets/kits/i[1].webp') }}" alt="" srcset=""> -->
+                                <img src="{{ url_for('static', path='assets/kits/' + i[1] + '.webp') }}" alt="" srcset="">
+                                <p>{{ i[0] }}</p>
+                            </div>
+                            <div class="player-points">5</div>
+                        </button>  
+                    {% endfor %}                 
                 </div>
                 <div class="team-row">
-                    <div class="player-stats">
-                        <div class="player-kit-img">
-                            <img src="{{ url_for('static', path='/assets/kits/ARS_2324_HK_PL_S1.webp') }}" alt="" srcset="">
-                            <p>Ramsdale</p>
-                        </div>
-                        <div class="player-points">5</div>
-                    </div>                
-                    <div class="player-stats">
-                        <div class="player-kit-img">
-                            <img src="{{ url_for('static', path='/assets/kits/ARS_2324_HK_PL_S1.webp') }}" alt="" srcset="">
-                            <p>Ramsdale</p>
-                        </div>
-                        <div class="player-points">5</div>
-                    </div>                
-                    <div class="player-stats">
-                        <div class="player-kit-img">
-                            <img src="{{ url_for('static', path='/assets/kits/ARS_2324_HK_PL_S1.webp') }}" alt="" srcset="">
-                            <p>Ramsdale</p>
-                        </div>
-                        <div class="player-points">5</div>
-                    </div>                
+                    {% for i in MID%}
+                        <button class="player-stats">
+                            <div class="player-kit-img">
+                                <!-- <img src="{{ url_for('static', path='/assets/kits/i[1].webp') }}" alt="" srcset=""> -->
+                                <img src="{{ url_for('static', path='assets/kits/' + i[1] + '.webp') }}" alt="" srcset="">
+                                <p>{{ i[0] }}</p>
+                            </div>
+                            <div class="player-points">5</div>
+                        </button>  
+                    {% endfor %}                   
                 </div>
                 <div class="team-row">
-                    <div class="player-stats">
-                        <div class="player-kit-img">
-                            <img src="{{ url_for('static', path='/assets/kits/ARS_2324_HK_PL_S1.webp') }}" alt="" srcset="">
-                            <p>Ramsdale</p>
-                        </div>
-                        <div class="player-points">5</div>
-                    </div>                
-                    <div class="player-stats">
-                        <div class="player-kit-img">
-                            <img src="{{ url_for('static', path='/assets/kits/ARS_2324_HK_PL_S1.webp') }}" alt="" srcset="">
-                            <p>Ramsdale</p>
-                        </div>
-                        <div class="player-points">5</div>
-                    </div>                
-                    <div class="player-stats">
-                        <div class="player-kit-img">
-                            <img src="{{ url_for('static', path='/assets/kits/ARS_2324_HK_PL_S1.webp') }}" alt="" srcset="">
-                            <p>Ramsdale</p>
-                        </div>
-                        <div class="player-points">5</div>
-                    </div>                
+                    {% for i in STR%}
+                        <button class="player-stats">
+                            <div class="player-kit-img">
+                                <!-- <img src="{{ url_for('static', path='/assets/kits/i[1].webp') }}" alt="" srcset=""> -->
+                                <img src="{{ url_for('static', path='assets/kits/' + i[1] + '.webp') }}" alt="" srcset="">
+                                <p>{{ i[0] }}</p>
+                            </div>
+                            <div class="player-points">5</div>
+                        </button>  
+                    {% endfor %}  
                 </div>
                 <div class="line"></div>
                 <div class="team-row">
-                    <div class="player-stats">
-                        <div class="player-kit-img">
-                            <img src="{{ url_for('static', path='/assets/kits/ARS_2324_HK_PL_S1.webp') }}" alt="" srcset="">
-                            <p>Ramsdale</p>
-                        </div>
-                        <div class="player-points">5</div>
-                    </div>                
-                    <div class="player-stats">
-                        <div class="player-kit-img">
-                            <img src="{{ url_for('static', path='/assets/kits/ARS_2324_HK_PL_S1.webp') }}" alt="" srcset="">
-                            <p>Ramsdale</p>
-                        </div>
-                        <div class="player-points">5</div>
-                    </div>                
-                    <div class="player-stats">
-                        <div class="player-kit-img">
-                            <img src="{{ url_for('static', path='/assets/kits/ARS_2324_HK_PL_S1.webp') }}" alt="" srcset="">
-                            <p>Ramsdale</p>
-                        </div>
-                        <div class="player-points">5</div>
-                    </div>                
-                    <div class="player-stats">
-                        <div class="player-kit-img">
-                            <img src="{{ url_for('static', path='/assets/kits/ARS_2324_HK_PL_S1.webp') }}" alt="" srcset="">
-                            <p>Ramsdale</p>
-                        </div>
-                        <div class="player-points">5</div>
-                    </div>                
+                    {% for i in SUB%}
+                        <button class="player-stats">
+                            <div class="player-kit-img">
+                                <!-- <img src="{{ url_for('static', path='/assets/kits/i[1].webp') }}" alt="" srcset=""> -->
+                                <img src="{{ url_for('static', path='assets/kits/' + i[1] + '.webp') }}" alt="" srcset="">
+                                <p>{{ i[0] }}</p>
+                            </div>
+                            <div class="player-points">5</div>
+                        </button>  
+                    {% endfor %}                  
                 </div>
             </div>
         </div>
