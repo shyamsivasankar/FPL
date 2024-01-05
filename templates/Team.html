@@ -22,7 +22,7 @@
                         <div class="gw-data">
                             <select class="gw-opt" title="Gameweek" name="GW" id="gw">
                                 {% for i in range(1, 38) %}
-                                    <option class="GWoptions" value="GW{{ i }}">{{ i }}</option>
+                                <option class="GWoptions" value="GW{{ i }}" {% if i == Manager['gw'] %}selected{% endif %}>{{ i }}</option>
                                 {% endfor %}
                             </select>
                         </div>
@@ -30,83 +30,53 @@
                     
                     <div class="gw">
                         <div class="gw-header">Manager</div>
-                        <div class="gw-data">Shyam</div>
+                        <div class="gw-data">{{ Manager['first_name']}} {{ Manager['last_name'] }}</div>
                     </div>
                     <input class="gw-submit" type="submit" value=">">
-                  </form>
+                </form>
+
                   <div class="gw-select">
                     <div>
                         <div class="gw-header">Live Points</div>
-                        <div class="gw-data">78</div>
+                        <div class="gw-data">{{ Manager['gw_points'] }}</div>
                     </div>
                     <div>
                         <div class="gw-header">Overall Points</div>
-                        <div class="gw-data">1965</div>
+                        <div class="gw-data">{{ Manager['overall_points'] }}</div>
                     </div>
                     <div>
                         <div class="gw-header">GW Rank</div>
-                        <div class="gw-data">5,200</div>
+                        <div class="gw-data">{{ Manager['gw_rank'] }}</div>
                     </div>
                     <div>
                         <div class="gw-header">Value</div>
-                        <div class="gw-data">$104.8</div>
+                        <div class="gw-data">${{ Manager['value'] }}</div>
                     </div>
                     <div>
                         <div class="gw-header">Overall</div>
-                        <div class="gw-data">9,321</div>
+                        <div class="gw-data">{{ Manager['overall_rank'] }}</div>
                     </div>
-                  </div>
+                </div>
             </div>
             <div class="line"></div>
             <div class="players">
+                {% for j in fpl_team %}
                 <div class="team-row">
-                    {% for i in GK%}
+                    {% for i in j%}
                         <button class="player-stats">
                             <div class="player-kit-img">
                                 <!-- <img src="{{ url_for('static', path='/assets/kits/i[1].webp') }}" alt="" srcset=""> -->
                                 <img src="{{ url_for('static', path='assets/kits/' + i[1] + '.webp') }}" alt="" srcset="">
-                                <p>{{ i[0] }}</p>
+                                <!-- <p>{{ i[0] }}</p> -->
                             </div>
-                            <div class="player-points">5</div>
+                            <div class="player-name">{{ i[0] }}</div>
+                            <div class="player-points">{{ i[3] }}</div>
                         </button>  
                     {% endfor %}              
                 </div>
-                <div class="team-row">
-                    {% for i in DEF%}
-                        <button class="player-stats">
-                            <div class="player-kit-img">
-                                <!-- <img src="{{ url_for('static', path='/assets/kits/i[1].webp') }}" alt="" srcset=""> -->
-                                <img src="{{ url_for('static', path='assets/kits/' + i[1] + '.webp') }}" alt="" srcset="">
-                                <p>{{ i[0] }}</p>
-                            </div>
-                            <div class="player-points">5</div>
-                        </button>  
-                    {% endfor %}                 
-                </div>
-                <div class="team-row">
-                    {% for i in MID%}
-                        <button class="player-stats">
-                            <div class="player-kit-img">
-                                <!-- <img src="{{ url_for('static', path='/assets/kits/i[1].webp') }}" alt="" srcset=""> -->
-                                <img src="{{ url_for('static', path='assets/kits/' + i[1] + '.webp') }}" alt="" srcset="">
-                                <p>{{ i[0] }}</p>
-                            </div>
-                            <div class="player-points">5</div>
-                        </button>  
-                    {% endfor %}                   
-                </div>
-                <div class="team-row">
-                    {% for i in STR%}
-                        <button class="player-stats">
-                            <div class="player-kit-img">
-                                <!-- <img src="{{ url_for('static', path='/assets/kits/i[1].webp') }}" alt="" srcset=""> -->
-                                <img src="{{ url_for('static', path='assets/kits/' + i[1] + '.webp') }}" alt="" srcset="">
-                                <p>{{ i[0] }}</p>
-                            </div>
-                            <div class="player-points">5</div>
-                        </button>  
-                    {% endfor %}  
-                </div>
+                {% endfor %}
+                
+                
                 <div class="line"></div>
                 <div class="team-row">
                     {% for i in SUB%}
@@ -114,9 +84,9 @@
                             <div class="player-kit-img">
                                 <!-- <img src="{{ url_for('static', path='/assets/kits/i[1].webp') }}" alt="" srcset=""> -->
                                 <img src="{{ url_for('static', path='assets/kits/' + i[1] + '.webp') }}" alt="" srcset="">
-                                <p>{{ i[0] }}</p>
                             </div>
-                            <div class="player-points">5</div>
+                            <div class="player-name">{{ i[0] }}</div>
+                            <div class="player-points">{{ i[3] }}</div>
                         </button>  
                     {% endfor %}                  
                 </div>
