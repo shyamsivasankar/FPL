@@ -44,22 +44,23 @@ async def login(req : Request, managerid : str = Form()):
     for i in user_data['picks']:
         for j in overall_data['elements']:
             if i['element'] == j['id']:
-                player_name.append([j['team_code'],
-                                    j['web_name'],
-                                    j['element_type'],
-                                    j['id'],
-                                    j['first_name'],
-                                    j['second_name'],
-                                    j['total_points'],
-                                    j['minutes'],
-                                    j['goals_scored'],
-                                    j['assists'],
-                                    j['clean_sheets'],
-                                    j['expected_goals'],
-                                    j['expected_assists'],
-                                    j['expected_goal_involvements'],
-                                    j['transfers_in_event'],
-                                    j['transfers_out_event']])
+                player_name.append({'team_code' :j['team_code'],
+                                    'web_name' : j['web_name'],
+                                    'element_type' : j['element_type'],
+                                    'id' : j['id'],
+                                    'first_name' : j['first_name'],
+                                    'second_name' : j['second_name'],
+                                    'total_points' : j['total_points'],
+                                    'minutes' : j['minutes'],
+                                    'goals_scored' : j['goals_scored'],
+                                    'assists' : j['assists'],
+                                    'clean_sheets' : j['clean_sheets'],
+                                    'expected_goals' : j['expected_goals'],
+                                    'expected_assists' : j['expected_assists'],
+                                    'expected_goal_involvements' : j['expected_goal_involvements'],
+                                    'transfers_in_event' : j['transfers_in_event'],
+                                    'transfers_out_event' : j['transfers_out_event'],
+                                    'is_captain' : i['is_captain']})
                 break
 
     avg_pts = []
@@ -68,42 +69,6 @@ async def login(req : Request, managerid : str = Form()):
         avg_pts.append(i['average_entry_score'])
         hst_pts.append(i['highest_score'])
 
-
-    for i in player_name:
-        for j in week_details['elements']:
-            if i[3]==j['id']:
-                i.append(j['stats']['total_points'])
-                break
-
-    weekly_squad = []
-    for i in player_name:
-        for j in overall_data['teams']:
-            if i[0] == j['code']:
-                weekly_squad.append([i[1],j['name'],i[2],i[4],i[5],i[6],i[7],i[8],i[9],i[10],i[11],i[12],i[13],i[14],i[15],i[16]]   )
-                break
-    
-    leagues = []
-    for i in manager_data['leagues']['classic']:
-        leagues.append([i['name'],i['entry_rank'],i['entry_last_rank']])
-    
-    GK = []
-    DEF = []
-    MID = []
-    STR = []
-    SUB = weekly_squad[len(weekly_squad)-4:]
-    weekly_squad= weekly_squad[:len(weekly_squad)-4]
-    for i in weekly_squad:
-        if i[2] == 1:
-            GK.append(i)
-        elif i[2] == 2:
-            DEF.append(i)
-        elif i[2] == 3:
-            MID.append(i)
-        else:
-            STR.append(i)
-    
-    fpl_team = [GK,DEF,MID,STR]
-    
     for i in avg_pts:
         if i==0:
             avg_pts.remove(i)
@@ -114,8 +79,43 @@ async def login(req : Request, managerid : str = Form()):
     avg_pts = avg_pts[:current_event]
     hst_pts = hst_pts[:current_event]
 
-    return templates.TemplateResponse('Team.html',
-                                      {'request':req, 
+
+    for i in player_name:
+        for j in week_details['elements']:
+            if i['id']==j['id']:
+                i['points'] = (j['stats']['total_points'])
+                break
+        
+
+    for i in player_name:
+        for j in overall_data['teams']:
+            if i['team_code'] == j['code']:
+                i['team_name'] = j['name']
+                break
+    
+    leagues = []
+    for i in manager_data['leagues']['classic']:
+        leagues.append([i['name'],i['entry_rank'],i['entry_last_rank']])
+    
+    GK = []
+    DEF = []
+    MID = []
+    STR = []
+    SUB = player_name[len(player_name)-4:]
+    player_name= player_name[:len(player_name)-4]
+    for i in player_name:
+        if i['element_type'] == 1:
+            GK.append(i)
+        elif i['element_type']== 2:
+            DEF.append(i)
+        elif i['element_type'] == 3:
+            MID.append(i)
+        else:
+            STR.append(i)
+    
+    fpl_team = [GK,DEF,MID,STR]
+
+    return templates.TemplateResponse('Team.html',{'request':req, 
                                        'fpl_team':fpl_team, 
                                        'SUB':SUB, 
                                        'Manager': manager,
