@@ -2,6 +2,7 @@ from fastapi import FastAPI,Request,Form
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
+import uvicorn
 
 from Modules.userdata import userteam
 from Modules.playerdata import player
@@ -128,3 +129,6 @@ async def login(req : Request, managerid : str = Form()):
 @app.get('/Team')
 async def team(request: Request):
     return templates.TemplateResponse('Team.html',{'request':request})
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)
