@@ -131,4 +131,4 @@ async def team(request: Request):
     return templates.TemplateResponse('Team.html',{'request':request})
 
 if __name__ == '__main__':
-    uvicorn.run(app, port=8080, host='0.0.0.0')
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
