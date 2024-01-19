@@ -136,7 +136,7 @@
                 {% for j in fpl_team %}
                 <div class="team-row">
                     {% for i in j%}
-                    <button class="player-stats">
+                    <button class="player-stats" id="{{ i['id'] }}">
                         <div class="player-kit-img">
                             <img src="{{ url_for('static', path='assets/kits/' + i['team_name'] + '.webp') }}" alt="" srcset="">
                         </div>
