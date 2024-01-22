@@ -27,7 +27,9 @@
         <div class="changing-details">
             <div class="player-details">
                 <div class="player-basic-data">
-                    <div class="player-image"></div>
+                    <div class="player-image">
+                        <img src="{{ url_for('static', path='assets/Players/' + fpl_team[3][1]['first_name']+' '+ fpl_team[3][1]['second_name']+ '.png') }}" alt="" srcset="">
+                    </div>
                     <div class="name">
                         <div class="first-name">{{ fpl_team[3][1]['first_name'] }}</div>
                         <div class="second-name">{{ fpl_team[3][1]['second_name'] }}</div>
@@ -155,7 +157,7 @@
                 <div class="line"></div>
                 <div class="team-row">
                     {% for i in SUB%}
-                    <button class="player-stats">
+                    <button class="player-stats" id="{{ i['id'] }}">
                         <div class="player-kit-img">
                             <img src="{{ url_for('static', path='assets/kits/' + i['team_name'] + '.webp') }}" alt=""
                                 srcset="">
@@ -171,6 +173,7 @@
     </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{{ url_for('static', path='/stats.js') }}"></script>
 <script type="module">
     import { createChart } from "{{ url_for('static', path='/team.js') }}";
     window.onload = function () {

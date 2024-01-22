@@ -2,6 +2,7 @@ from fastapi import FastAPI,Request,Form
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
+from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
 from Modules.userdata import userteam
@@ -19,6 +20,11 @@ app.mount("/static",StaticFiles(directory='static'),name='static')
 @app.get('/',response_class=HTMLResponse)
 async def home(request: Request):
     return templates.TemplateResponse('Login.html',{'request':request})
+
+@app.get('/overall_data_fetch')
+async def Overall_data_fetch(request: Request):
+    data = await overall()
+    return data
 
 @app.post('/Login')
 async def login(req : Request, managerid : str = Form()):
@@ -45,23 +51,9 @@ async def login(req : Request, managerid : str = Form()):
     for i in user_data['picks']:
         for j in overall_data['elements']:
             if i['element'] == j['id']:
-                player_name.append({'team_code' :j['team_code'],
-                                    'web_name' : j['web_name'],
-                                    'element_type' : j['element_type'],
-                                    'id' : j['id'],
-                                    'first_name' : j['first_name'],
-                                    'second_name' : j['second_name'],
-                                    'total_points' : j['total_points'],
-                                    'minutes' : j['minutes'],
-                                    'goals_scored' : j['goals_scored'],
-                                    'assists' : j['assists'],
-                                    'clean_sheets' : j['clean_sheets'],
-                                    'expected_goals' : j['expected_goals'],
-                                    'expected_assists' : j['expected_assists'],
-                                    'expected_goal_involvements' : j['expected_goal_involvements'],
-                                    'transfers_in_event' : j['transfers_in_event'],
-                                    'transfers_out_event' : j['transfers_out_event'],
-                                    'is_captain' : i['is_captain']})
+                temp = j 
+                temp['is_captain'] = i['is_captain']
+                player_name.append(temp)
                 break
 
     avg_pts = []

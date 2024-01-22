@@ -315,7 +315,16 @@ body{
   .player-image{
     height: 95%;
     width: 20%;
-    background: #20272E;
+    /* background: #20272E; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .player-image img{
+    height: 100%;
+    width: 100%;
   }
 
   .name{
@@ -445,3 +454,35 @@ body{
   .slider.round:before {
     border-radius: 50%;
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  @-webkit-keyframes spin {
+    from { -webkit-transform: rotateY(0deg); }
+    to { -webkit-transform: rotateY(360deg); }
+  }
+  @keyframes spin {
+      from {transform:rotateY(0deg);}
+      to {transform:rotateY(360deg);}
+  }
+
+.player-details{
+  animation-name: spin;
+  animation-duration: 1000ms;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+}
