@@ -12,7 +12,7 @@ async function fetchData() {
                         if (fpl_team[j]['id'] == this.id) {
                             card_data.innerHTML = `<div class="player-basic-data">
                         <div class="player-image">
-                            <img src="static/assets/Players/'` + fpl_team[j]['first_name']+` `+ fpl_team[j]['second_name']`+ '.png') " alt="" srcset="">
+                            <img src="static/assets/Players/'` + fpl_team[j]['first_name']+` `+ fpl_team[j]['second_name']+ `'.png') " alt="" srcset="">
                         </div>
                         <div class="name">
                             <div class="first-name">` + fpl_team[j]['first_name'] + `</div>

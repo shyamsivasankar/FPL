@@ -11,6 +11,7 @@ from Modules.overall import overall
 from Modules.gameweek import gameweek
 from Modules.managerdata import managerdata
 from Modules.mhistory import managerHistory
+from Modules.fixtures import fixtures
 import jsons
 
 app = FastAPI()
@@ -24,6 +25,11 @@ async def home(request: Request):
 @app.get('/overall_data_fetch')
 async def Overall_data_fetch(request: Request):
     data = await overall()
+    return data
+
+@app.get('/fixtures')
+async def fixtures_data(request: Request):
+    data = await fixtures()
     return data
 
 @app.post('/Login')

@@ -28,63 +28,71 @@
             <div class="player-details">
                 <div class="player-basic-data">
                     <div class="player-image">
-                        <img src="{{ url_for('static', path='assets/Players/' + fpl_team[3][1]['first_name']+' '+ fpl_team[3][1]['second_name']+ '.png') }}" alt="" srcset="">
+                        <img src="{{ url_for('static', path='assets/Players/' + fpl_team[3][0]['first_name']+' '+ fpl_team[3][0]['second_name']+ '.png') }}" alt="" srcset="">
                     </div>
                     <div class="name">
-                        <div class="first-name">{{ fpl_team[3][1]['first_name'] }}</div>
-                        <div class="second-name">{{ fpl_team[3][1]['second_name'] }}</div>
+                        <div class="first-name">{{ fpl_team[3][0]['first_name'] }}</div>
+                        <div class="second-name">{{ fpl_team[3][0]['second_name'] }}</div>
                     </div>
                 </div>
                 <div class="player-basic-stats">
                     <div class="gw-select">
                         <div>
                             <div class="gw-header">Points</div>
-                            <div class="gw-data">{{ fpl_team[3][1]['total_points'] }}</div>
+                            <div class="gw-data">{{ fpl_team[3][0]['total_points'] }}</div>
                         </div>
                         <div>
                             <div class="gw-header">Minutes</div>
-                            <div class="gw-data">{{ fpl_team[3][1]['minutes'] }}</div>
+                            <div class="gw-data">{{ fpl_team[3][0]['minutes'] }}</div>
                         </div>
                         <div>
                             <div class="gw-header">Goals</div>
-                            <div class="gw-data">{{ fpl_team[3][1]['goals_scored'] }}</div>
+                            <div class="gw-data">{{ fpl_team[3][0]['goals_scored'] }}</div>
                         </div>
                         <div>
                             <div class="gw-header">Assists</div>
-                            <div class="gw-data">{{ fpl_team[3][1]['assists'] }}</div>
+                            <div class="gw-data">{{ fpl_team[3][0]['assists'] }}</div>
                         </div>
                         <div>
                             <div class="gw-header">Clean Sheets</div>
-                            <div class="gw-data">{{ fpl_team[3][1]['clean_sheets'] }}</div>
+                            <div class="gw-data">{{ fpl_team[3][0]['clean_sheets'] }}</div>
                         </div>
                     </div>
                     <div class="card-line"></div>
                     <div class="gw-select">
                         <div>
                             <div class="gw-header">xG</div>
-                            <div class="gw-data">{{ fpl_team[3][1]['expected_goals'] }}</div>
+                            <div class="gw-data">{{ fpl_team[3][0]['expected_goals'] }}</div>
                         </div>
                         <div>
                             <div class="gw-header">xA</div>
-                            <div class="gw-data">{{ fpl_team[3][1]['expected_assists'] }}</div>
+                            <div class="gw-data">{{ fpl_team[3][0]['expected_assists'] }}</div>
                         </div>
                         <div>
                             <div class="gw-header">xGi</div>
-                            <div class="gw-data">{{ fpl_team[3][1]['expected_goal_involvements'] }}</div>
+                            <div class="gw-data">{{ fpl_team[3][0]['expected_goal_involvements'] }}</div>
                         </div>
                         <div>
                             <div class="gw-header">In</div>
-                            <div class="gw-data">{{ fpl_team[3][1]['transfers_in_event'] }}</div>
+                            <div class="gw-data">{{ fpl_team[3][0]['transfers_in_event'] }}</div>
                         </div>
                         <div>
                             <div class="gw-header">Out</div>
-                            <div class="gw-data">{{ fpl_team[3][1]['transfers_out_event'] }}</div>
+                            <div class="gw-data">{{ fpl_team[3][0]['transfers_out_event'] }}</div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="team-details">
-
+                <div class="player-basic-data">
+                    <div class="player-image">
+                        <img src="{{ url_for('static', path='assets/Players/' + fpl_team[3][0]['first_name']+' '+ fpl_team[3][0]['second_name']+ '.png') }}" alt="" srcset="">
+                    </div>
+                    <div class="name">
+                        <div class="first-name">{{ fpl_team[3][0]['first_name'] }}</div>
+                        <div class="second-name">{{ fpl_team[3][0]['second_name'] }}</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
