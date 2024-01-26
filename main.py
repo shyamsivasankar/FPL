@@ -31,10 +31,6 @@ async def fixtures_data(request: Request):
     data = await fixtures()
     return data
 
-@app.get("/images/{image_name}")
-async def serve_image(image_name: str):
-    return FileResponse(f"static/assets/Players/{image_name}")
-
 @app.post('/Login')
 async def login(req : Request, managerid : str = Form()):
     manager_data = await managerdata(managerid=managerid)

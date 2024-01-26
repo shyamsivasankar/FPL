@@ -1,5 +1,4 @@
 var buttons = document.querySelectorAll('.player-stats')
-
 async function fetchData() {
     try {
         const response = await fetch('/overall_data_fetch');
@@ -10,12 +9,10 @@ async function fetchData() {
                 var card_data = document.querySelector('.player-details')
                 for (const j in fpl_team) {
                     if (fpl_team[j]['id'] == this.id) {
-                        imgsrc = fpl_team[j]['first_name'].replace(/%20/g, ' ') + ' ' + fpl_team[j]['second_name'].replace(/%20/g, ' ') + '.png'
-                        console.log(imgsrc)
-                        const path = await fetch('/images/'+imgsrc) 
+                        imgsrc = fpl_team[j]['first_name']+ ' ' + fpl_team[j]['second_name'] + '.png'
                         card_data.innerHTML = `<div class="player-basic-data">
                         <div class="player-image">
-                            <img src=`+ imgsrc + ` alt="" srcset="">
+                            <img src= "http://127.0.0.1:8000/static/assets/Players/`+ imgsrc + `" alt="" srcset="">
                         </div>
                         <div class="name">
                             <div class="first-name">` + fpl_team[j]['first_name'] + `</div>
@@ -69,8 +66,6 @@ async function fetchData() {
                             </div>
                         </div>
                     </div>`
-                    let imgElement = document.getElementById('playimg');
-                    imgElement.src = path['url']
                     }
                 }
             })

@@ -148,7 +148,7 @@
                     {% for i in j%}
                     <button class="player-stats" id="{{ i['id'] }}">
                         <div class="player-kit-img">
-                            <img src="{{ url_for('static', path='assets/kits/' + i['team_name'] + '.webp') }}" alt="" srcset="">
+                            <img src="{{ url_for('static', path='assets/kits/HK/' + i['team_name'] + '.webp') }}" alt="" srcset="">
                         </div>
                         <div class="player-name">{{ i['web_name'] }}</div>
                         {% if i['is_captain']==True %}
@@ -160,15 +160,12 @@
                     {% endfor %}
                 </div>
                 {% endfor %}
-
-
                 <div class="line"></div>
                 <div class="team-row">
                     {% for i in SUB%}
                     <button class="player-stats" id="{{ i['id'] }}">
                         <div class="player-kit-img">
-                            <img src="{{ url_for('static', path='assets/kits/' + i['team_name'] + '.webp') }}" alt=""
-                                srcset="">
+                            <img src="{{ url_for('static', path='assets/kits/HK/' + i['team_name'] + '.webp') }}" alt="" srcset="">
                         </div>
                         <div class="player-name">{{ i['web_name'] }}</div>
                         <div class="player-points">{{ i['points'] }}</div>
