@@ -6,13 +6,16 @@ async function fetchData() {
         const data = await response.json();
         var fpl_team = data['elements'];
         for (var i = 0; i < buttons.length; i++) {
-            buttons[i].addEventListener('click', function () {
+            buttons[i].addEventListener('click', async function () {
                 var card_data = document.querySelector('.player-details')
-                    for (const j in fpl_team) {
-                        if (fpl_team[j]['id'] == this.id) {
-                            card_data.innerHTML = `<div class="player-basic-data">
+                for (const j in fpl_team) {
+                    if (fpl_team[j]['id'] == this.id) {
+                        imgsrc = fpl_team[j]['first_name'].replace(/%20/g, ' ') + ' ' + fpl_team[j]['second_name'].replace(/%20/g, ' ') + '.png'
+                        console.log(imgsrc)
+                        const path = await fetch('/images/'+imgsrc) 
+                        card_data.innerHTML = `<div class="player-basic-data">
                         <div class="player-image">
-                            <img src="static/assets/Players/'` + fpl_team[j]['first_name']+` `+ fpl_team[j]['second_name']+ `'.png') " alt="" srcset="">
+                            <img src=`+ imgsrc + ` alt="" srcset="">
                         </div>
                         <div class="name">
                             <div class="first-name">` + fpl_team[j]['first_name'] + `</div>
@@ -66,9 +69,10 @@ async function fetchData() {
                             </div>
                         </div>
                     </div>`
-                    console.log()
-                        }
+                    let imgElement = document.getElementById('playimg');
+                    imgElement.src = path['url']
                     }
+                }
             })
         }
 

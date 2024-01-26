@@ -349,6 +349,25 @@ body{
     font-size: 18px;
   }
 
+  @media (min-width:1440px){
+    .first-name{
+      font-size: 18px;
+    }
+  
+    .second-name{
+      font-size: 24px;
+    }
+
+    .gw{
+      width: 300px;
+      height: 60px;
+    }
+
+    .player-name, .player-points{
+      font-size: 14px;
+    }
+  }
+
   .player-basic-stats{
     height: 60%;
     width: 100%;

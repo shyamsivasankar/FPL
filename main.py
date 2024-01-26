@@ -1,8 +1,7 @@
 from fastapi import FastAPI,Request,Form
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse,FileResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
-from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
 from Modules.userdata import userteam
@@ -31,6 +30,10 @@ async def Overall_data_fetch(request: Request):
 async def fixtures_data(request: Request):
     data = await fixtures()
     return data
+
+@app.get("/images/{image_name}")
+async def serve_image(image_name: str):
+    return FileResponse(f"static/assets/Players/{image_name}")
 
 @app.post('/Login')
 async def login(req : Request, managerid : str = Form()):
