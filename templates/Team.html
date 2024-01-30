@@ -10,7 +10,11 @@
 
 <body>
     <div class="navbar">
-
+        <form action="/navbar" class="navbar-form" method="post">
+            <button type="submit" class="navbar-buttons" name="compare">
+                <img src="{{ url_for('static',path='/assets/swap.svg')}}" alt="" >
+            </button>
+        </form>
     </div>
     <div class="stats">
         <div class="chart-change">

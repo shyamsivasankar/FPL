@@ -29,6 +29,42 @@ body{
     height: 100%;
     width: 5%;
     background: #161A1F;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar-form{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar-buttons{
+  height: 10%;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.navbar-buttons img{
+  height: 100%;
+  width: 100%;
+}
+
+.navbar-buttons:hover{
+  background-color: #20272E;
 }
 
 .stats{
@@ -476,22 +512,6 @@ body{
     border-radius: 50%;
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   @-webkit-keyframes spin {
     from { -webkit-transform: rotateY(0deg); }
     to { -webkit-transform: rotateY(360deg); }
@@ -507,3 +527,4 @@ body{
   animation-iteration-count: 1;
   animation-timing-function: linear;
 }
+
