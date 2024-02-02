@@ -4,13 +4,7 @@ from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 import uvicorn
 
-from Modules.userdata import userteam
-from Modules.playerdata import player
-from Modules.overall import overall
-from Modules.gameweek import gameweek
-from Modules.managerdata import managerdata
-from Modules.mhistory import managerHistory
-from Modules.fixtures import fixtures
+from Modules.data_collection import fixtures,overall
 from Modules.Team_data import team_data
 
 app = FastAPI()
@@ -43,8 +37,8 @@ async def team(request: Request):
     return templates.TemplateResponse('Team.html',{'request':request})
 
 @app.post('/navbar')
-async def compare_teams(request: Request, managerid: str = Depends(Cookie("managerid"))):
-    return {"data" : managerid}
+async def compare_teams(request: Request, managerid: str | None = Cookie("managerid")):
+    return managerid
 
 if __name__ == '__main__':
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
